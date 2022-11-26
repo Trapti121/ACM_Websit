@@ -1,0 +1,98 @@
+backend:
+  name: git-gateway
+  repo: PCCOER-ACM-Student-Chapter/PCCOER-ACM-Website
+  branch: main
+publish_mode: editorial_workflow
+# These lines should *not* be indented
+media_folder: "src/images" # Media files will be stored in the repo under static/images/uploads
+public_folder: "../../images" # The src attribute for uploaded media will begin with /images/uploads
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "src/data/blogs" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Sub-Title",
+          name: "subtitle",
+          widget: "string",
+          required: false,
+        }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - {
+          label: "Featured Image",
+          name: "thumb",
+          widget: "image",
+          required: false,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: "events"
+    label: "Events"
+    folder: "src/data/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "sortBy", name: "sortBy", widget: "string" }
+      - {
+          label: "Sub-Title",
+          name: "subtitle",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "date",
+          name: "eventdate",
+          widget: "string",
+          default: "",
+          required: false,
+        }
+      - { label: "Speakers", name: "speakers", widget: "string" }
+      - { label: "Type", name: "type", widget: "string", required: false }
+      - {
+          label: "Featured Image",
+          name: "thumb",
+          widget: "image",
+          required: false,
+        }
+
+      - { label: "Body", name: "body", widget: "markdown" }
+  # - name: "members"
+  #   label: "Members"
+  #   folder: "src/data/members"
+  #   create: true
+  #   slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+  #   fields:
+  #     - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+  #     - label: "Header"
+  #       name: "header"
+  #       widget: "object"
+  #       fields:
+  #         - { label: "title", name: "Title", widget: "string" }
+  #         - {
+  #             label: "Sub-Title",
+  #             name: "subtitle",
+  #             widget: "string",
+  #             required: false,
+  #           }
+  #     - label: "Event-Date"
+  #       name: "eventdate"
+  #       widget: "date"
+  #       default: ""
+  #       format: "MMM Do YY"
+  #     - { label: "Speakers", name: "speakers", widget: "string" }
+  #     - { label: "Type", name: "type", widget: "string", required: false }
+  #     - {
+  #         label: "Featured Image",
+  #         name: "thumb",
+  #         widget: "image",
+  #         required: false,
+  #       }
+
+  #     - { label: "Body", name: "body", widget: "markdown" }
